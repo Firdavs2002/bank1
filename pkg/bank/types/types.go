@@ -3,6 +3,9 @@ package types
 // Money представляет собой денеэную сумму в минималных единиц (центы, копейки, дирамы и т.д)
 type Money int64
 
+// Category представляет собой категорию, в которию был совершен платёж (авто, аптека, рестараны и т.д)
+type Category string
+
 // Currency представляет код валюты
 type Currency string
 
@@ -27,4 +30,18 @@ type Card struct {
 	Color      string
 	Name       string
 	Active     bool
+}
+
+// Payment представляет игформацию о платиже
+type Payment struct {
+	ID       int
+	Amount   Money
+	Category Category
+}
+
+// PaymentSource представляет игформацию о платиже
+type PaymentSource struct {
+	Type    string // 'card'
+	Number  string // номер вида '5058 xxxx xxxx 8888'
+	Balance Money  // баланс в дирамах
 }
